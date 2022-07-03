@@ -1,0 +1,21 @@
+<form enctype="multipart/form-data" method="post">
+    {% csrf_token %}
+    {% for i in formulario %}
+    <div class="mb3">
+        <label for="" class="form-label">{{i.label}}:</label>
+        <br/>
+        {% if i.field.widget.input_type == 'file' and i.value %}
+        <img src="{{MEDIA_URL}}/imagenes/{{ i.value }}" width="100" alt="">
+
+        {% endif %}
+        <input type = "{{ i.field.widget.input_type }}" 
+        class="form-control" id = "" name = "{{i.name}}" value="{{i.value | default:'' }}"/>
+    </div>
+    <div class = "col-12 help-text">{{i.errors}}</div>
+    {% endfor %}
+    <div>
+        <br/>
+        <input type="submit" class="btn btn-success" value="Guardar">
+        <a type="" href="{% url 'proveedor' %}" class="btn btn-dark">Cancelar</a>
+    </div>
+</form>

@@ -1,0 +1,49 @@
+{% extends "base.html" %} 
+
+{% block titulo %} Proveedores{% endblock %}
+
+{% block contenido %} 
+
+<div class = "card">
+    <div class = "card-header">
+        <a class="btn btn-success" href="{% url 'crear' %}"> Agregar proveedor</a>
+    </div>
+    <div class="card-body">
+        <h4 class="card-title">Proveedores</h4>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Foto:</th>
+                    <th>Nombre</th>
+                    <th>Documento</th>
+                    <th>Correo</th>
+                    <th>Compañia</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for proveedor in proveedors %}
+                <tr>
+                    <td>{{ proveedor.id }}</td>
+                    <td>
+                        <img src="{{ proveedor.foto.url }}" height="100">
+                    </td>
+                    <td>{{ proveedor.nombre }}</td>
+                    <td>{{ proveedor.documento }}</td>
+                    <td>{{ proveedor.correo }}</td>
+                    <td>{{ proveedor.compañia }}</td>
+                    <td>
+                        <a href="{% url 'editar' proveedor.id %}" class="btn btn-info">Editar</a>
+                        | 
+                        <a href="{% url 'eliminar' proveedor.id %}" class="btn btn-danger">Borrar</a>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>        
+    </div>
+
+</div>
+
+{% endblock %}
