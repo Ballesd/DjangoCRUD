@@ -16,7 +16,7 @@ python manage.py startapp {nombre_de_la_futura_tabla}
     DATABASES = {
         'default': {
             'ENGINE': 'django.db.backends.mysql',
-            'NAME':  'testdjango',
+            'NAME':  'nombre_base_de_datos',
             'USER': 'root',
             'PASSWORD': '',
             'HOST': 'localhost',
